@@ -6,6 +6,8 @@ import AddCraftItem from "../Pages/AddCraftItem";
 import MyArtandCraftList from "../Pages/MyArtandCraftList";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
+import UpdateArtAndCraft from "../Pages/UpdateArtAndCraft";
+import Details from "../Pages/Details";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +30,16 @@ export const router = createBrowserRouter([
             {
                 path:"/myArtAndCraftList",
                 element:<MyArtandCraftList/>
+            },
+            {
+                path:"/updateArtAndCraft/:id",
+                element:<UpdateArtAndCraft/>,
+                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`)
+            },
+            {
+                path:'/details/:id',
+                element:<Details/>,
+                loader:({params})=>fetch(`http://localhost:5000/crafts/${params.id}`)
             },
             {
                 path:'/signIn',
