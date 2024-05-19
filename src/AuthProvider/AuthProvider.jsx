@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     // signOut
-    const SignOUT=()=>{
+    const signOUT=()=>{
         setLoader(true);
         return signOut(auth);
     }
@@ -29,16 +29,16 @@ const AuthProvider = ({children}) => {
             setLoader(false);
             setUser(currentUser);
             console.log('observing', currentUser);
+        });
+        return (()=>{
+            unsubscribe();
         })
-        return{
-            unsubscribe
-        }
     },[])
     const authInfo={
         loader,
         createUser,
         signIn,
-        SignOUT,
+        signOUT,
         user
     }
     return (
