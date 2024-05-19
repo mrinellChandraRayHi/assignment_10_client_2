@@ -10,8 +10,9 @@ const AddCraftItem = () => {
         const customization=form.customization.value;
         const processing_time=form.processing_time.value;
         const description=form.description.value;
+        const photo=form.photo.value;
 
-        const addCraft={item_name, subcategory_name, price, customization, processing_time, description};
+        const addCraft={item_name, subcategory_name, price, customization, processing_time, description, photo};
         console.log(addCraft);
         fetch('http://localhost:5000/crafts',{
             method:"POST",
@@ -38,8 +39,8 @@ const AddCraftItem = () => {
         <div>
             <div>
                 <h1 className="text-center font-bold text-6xl my-10">This is Add Craft</h1>
-                <form onSubmit={handleAddCraft}>
-                    <div className="space-y-4 bg-gray-400 p-5 rounded">
+                <form onSubmit={handleAddCraft} className="mb-10 p-3">
+                    <div className="space-y-4 bg-gray-400 p-5 rounded max-w-[900px] mx-auto">
                     <div>
                         <label className="font-bold text-xl" htmlFor="">Item_Name: </label>
                         <input className="w-full border border-black rounded py-2 px-2" type="text" name="item_name" id="" />
@@ -66,6 +67,10 @@ const AddCraftItem = () => {
                     <div>
                         <label className="block font-bold text-xl" htmlFor="">Description: </label>
                         <textarea className="w-full border border-black rounded p-2" name="description" id=""></textarea>
+                    </div>
+                    <div>
+                        <label className="font-bold text-xl" htmlFor="">Photo: </label>
+                        <input className="w-full py-2 rounded px-2" type="text" name="photo" id="" />
                     </div>
                     <div>
                         <input className="w-full border border-black rounded py-2 bg-red-200 font-bold" type="submit" value="Add Craft" />
